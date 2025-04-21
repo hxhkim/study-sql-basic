@@ -4,8 +4,8 @@
 [lecture link](https://www.inflearn.com/course/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B9%85%EC%BF%BC%EB%A6%AC-sql-%EC%9E%85%EB%AC%B8/dashboard)
 
 ### expected output
-1. 풀이가 완료된 47개의 basic sql 문제
-2. 주관적 언어로 정리가 완료된 강의 교안 및 쿼리
+- [] 풀이가 완료된 47개의 basic sql 문제
+- [] 주관적 언어로 정리가 완료된 강의 교안 및 쿼리
 
 ### study plan
 1. 매일 1시간
