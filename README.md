@@ -6,7 +6,7 @@ basic sql study repo
 
 ### expected output
 1. 풀이가 완료된 47개의 basic sql 문제
-2. 
+2. 주관적 언어로 정리가 완료된 강의 교안 및 쿼리
 
 ### study plan
 1. 매일 1시간
