@@ -1,4 +1,7 @@
 # study-sql-basic
+
+### study goal
+- 업무 쳐내느라 잊고 지냈던 sql 기본기 다시 훑기
  
 ### study materials
 [lecture link](https://www.inflearn.com/course/%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B9%85%EC%BF%BC%EB%A6%AC-sql-%EC%9E%85%EB%AC%B8/dashboard)
