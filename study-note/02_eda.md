@@ -40,22 +40,40 @@ WHERE
 
 - 계산이라고 하면: 사칙연산, count, min, max, average 등
 
-* 자주 쓰는 것들
+ ### 자주 쓰는 것들
     - AVG() 평균
     - COUNT()
     - COUNTIF() 특정 조건을 만족하는 row 세기
     - MAX()
     - MIN()
     - SUM()
-    - 집계한 후에 그룹화 -> HAVING
-    - 집계 전에 그룹화 -> GROUP BY
-    - 중복제거 -> DISTINCT (집계함수 안에서 주로 사용) 와 GROUP BY 둘 다 사용 가능
+    - GROUP BY
+    - 중복을 제외하고 싶은 경우 -> DISTINCT (집계함수 안에서 주로 사용) 와 GROUP BY 둘 다 사용 가능
+
+###  조건을 주는 WHERE과 HAVING의 차이점
+    - WHERE: 테이블에 바로 조건을 걸고 싶을 때 사용. FROM절 바로 밑에 사용.
+    - HAVING: GROUP BY를 한 상태에서 조건을 걸고 싶을 때 사용. GROUP BY절 이후에 사용.
 
 ```sql
 SELECT
-    COUNT(DISTINT type)
+    COUNT(DISTINT type) AS type_count
 FROM 
 GROUP BY
+HAVING
+    type_count > 3
+ORDER BY
 ```
+### 서브쿼리
+    - FROM절 안에 존재하는 또 다른 SELECT FROM WHERE
+    - HAVING과 할 수 있는 것은 동일함. 다른 방법일 뿐.
 
+### 기타
+    - ORDER BY: 디폴트가 ASC (오름차순). DECS (내림차순-큰거부터 내려간다)
+    - 순서는 LIMIT이 찐찐막이고, 그 바로 위에 ORDER BY
 
+# 총정리
+- 집계를 하고 싶은 경우: AVG(), MIN(), MAX() + 거의 GROUP BY와 함께 사용!
+- 고윳값을 알고 싶은 경우: DISTINCT 혹은 GROUP BY -> 주로 COUNT(DISTICT column-name)
+- 조건을 설정하고 싶은 경우: WHERE 혹은 HAVING
+- 정렬하고 싶은 경우: ORDER BY
+- 출력 갯수를 제한하고 싶은 경우: LIMIT
