@@ -1,38 +1,73 @@
--- 1. pokemon 테이블에 있는 포켓몬 수를 구하는 쿼리를 작성해주세요
--- 사용할 테이블 : pokemon
--- 조건 : X
--- 그룹화를 할 때 사용할 컬럼 : X
--- 집계할 때 사용할 계산 : 수를 구한다 => COUNT, 포켓몬
--- SELECT
---   COUNT(id) AS cnt
--- FROM basic.pokemon
 
--- 2. 포켓몬의 수가 세대별로 얼마나 있는지 알 수 있는 쿼리를 작성해주세요
--- 사용할 테이블 : pokemon
--- 조건 : X
--- 그룹화를 할 때 사용할 컬럼 : 세대
--- 집계할 때 사용할 계산 : 얼마나 있는지 => 수를 구한다 => COUNT
+# groupby 연습문제
 
--- SELECT
---   generation,
---   COUNT(id) AS cnt  
--- FROM basic.pokemon
--- GROUP BY 
---   generation
+# 1번 문제
+# pokemon 테이블에 있는 포켓몬 수를 구하는 쿼리를 작성해주세요.
+SELECT 
+  COUNT(*) AS num_of_pokemon
+FROM `study-sql-basic.basic.pokemon`
 
--- 3. 포켓몬의 수를 타입 별로 집계하고, 포켓몬의 수가 10 이상인 타입만 남기는 쿼리를 작성해주세요. 포켓몬의 수가 많은 순으로 정렬해주세요
--- pokemon
--- 조건 (WHERE) => 테이블 원본 => 없음
--- 집계 후 조건 (HAVING) => 10 이상
--- 포켓몬의 수가 많은 순으로 정렬(ORDER BY 포켓몬 수 DESC)
--- 단계적으로 실행해보면서 가도 된다! 한번에 정답을 맞추려고 안해도 된다
+# 2번 문제
+# 포켓몬이 세대 별로 얼마나 있는지 구하는 쿼리를 작성해주세요.
 
+# 내 답안
+/*
+generation	count
+num_of_pokemon_by_gen
+151
+100
+*/
+SELECT 
+  COUNT(generation) AS num_of_pokemon_by_gen
+FROM `study-sql-basic.basic.pokemon`
+GROUP BY generation
+
+# 강의 답안
+/*
+generation	count
+1	151
+2	100
+*/
 SELECT
-  type1, 
-  COUNT(id) AS cnt
-FROM basic.pokemon
-GROUP BY
-  type1
-HAVING cnt >= 10
-ORDER BY cnt DESC  
+  generation -- 정보를 줄 수 있는 컬럼 하나 추가
+  , COUNT(id) AS count
+FROM `study-sql-basic.basic.pokemon`
+GROUP BY generation -- GROUP BY 기준이 되는 컬럼이 SELECT에 반드시 있어야 함.
+
+# 3번 문제
+# 포켓몬의 수를 타입별로 집계하고, 포켓몬의 수가 10이상인 타입만 남기는 쿼리를 작성해주세요. 포켓몬의 수가 많은 순으로 정렬해주세요.
+
+-- HAVING으로 풀기
+SELECT
+  type1 AS type
+  , COUNT(id) AS num_of_type
+FROM `study-sql-basic.basic.pokemon`
+GROUP BY type1
+HAVING num_of_type >= 10
+ORDER BY num_of_type DESC
+
+-- 서브쿼리로 풀기
+SELECT *
+FROM (
+  SELECT 
+    type1 AS type
+    , COUNT(id) AS num_of_type
+  FROM `study-sql-basic.basic.pokemon`
+  GROUP BY type1
+)
+WHERE
+  num_of_type >= 10
+
+
+
+
+
+
+
+
+
+
+
+
+
 
